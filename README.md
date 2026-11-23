@@ -166,7 +166,7 @@ StudyMate-AI/
 
 ## 👩‍💻 Author
 
-**Nikita Mehra**
+**Nikita Mehra | Priyal Agarwal | Darshi Jain **
 
 B.Tech CSE – AI & ML
 
