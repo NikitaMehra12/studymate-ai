@@ -1,0 +1,570 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>StudyMate AI | Student Study Planner</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+
+            <div class="logo">
+                <span class="logo-icon">✦</span>
+                <h2>StudyMate <span>AI</span></h2>
+            </div>
+
+            <p class="menu-heading">MENU</p>
+
+            <nav class="navigation">
+
+                <button class="nav-link active" data-page="dashboard">
+                    <span>▦</span> Dashboard
+                </button>
+
+                <button class="nav-link" data-page="planner">
+                    <span>✧</span> AI Study Planner
+                </button>
+
+                <button class="nav-link" data-page="tasks">
+                    <span>☑</span> My Tasks
+                </button>
+
+                <button class="nav-link" data-page="assistant">
+                    <span>✦</span> AI Study Assistant
+                </button>
+
+                <button class="nav-link" data-page="progress">
+                    <span>◷</span> Progress Tracker
+                </button>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+                <p>YOUR PERSONAL STUDY COMPANION</p>
+                <button id="themeToggle" class="theme-button">
+                    <span id="themeIcon">☀</span>
+                    <span id="themeText">Light Mode</span>
+                </button>
+            </div>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+
+            <!-- Top Header -->
+            <header class="topbar">
+
+                <button class="mobile-menu" id="mobileMenu">
+                    ☰
+                </button>
+
+                <div>
+                    <p class="top-label">STUDENT WORKSPACE</p>
+                    <h3>My Workspace</h3>
+                </div>
+
+                <div class="profile">
+                    <div class="profile-avatar">S</div>
+                    <div>
+                        <strong>Student</strong>
+                        <small>College Student</small>
+                    </div>
+                </div>
+
+            </header>
+
+            <!-- Dashboard Page -->
+            <section class="page active" id="dashboard">
+
+                <div class="welcome-section">
+                    <div>
+                        <p class="date-text" id="currentDate"></p>
+                        <h1>Welcome back, Student! 👋</h1>
+                        <p class="subtitle">
+                            Organize your studies and make today productive.
+                        </p>
+                    </div>
+
+                    <button class="primary-button" data-go="planner">
+                        ✧ Generate Study Plan
+                    </button>
+                </div>
+
+                <!-- Statistics -->
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <p>Total Tasks</p>
+                        <h2 id="totalTasks">0</h2>
+                        <span>All your academic tasks</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <p>Completed Tasks</p>
+                        <h2 id="completedTasks">0</h2>
+                        <span>Tasks finished</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <p>Pending Tasks</p>
+                        <h2 id="pendingTasks">0</h2>
+                        <span>Tasks remaining</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <p>Study Progress</p>
+                        <h2 id="studyProgress">0%</h2>
+                        <span>Overall completion</span>
+                    </div>
+
+                </div>
+
+                <!-- Dashboard Content -->
+                <div class="dashboard-grid">
+
+                    <div class="content-card">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Today's Tasks</h3>
+                                <p>Your academic priorities</p>
+                            </div>
+
+                            <button class="text-button" data-go="tasks">
+                                View All →
+                            </button>
+                        </div>
+
+                        <div id="todayTasks" class="empty-state">
+                            <span>📚</span>
+                            <p>No tasks added yet.</p>
+                            <button class="text-button" data-go="tasks">
+                                Add your first task →
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <div class="content-card">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Study Progress</h3>
+                                <p>Your overall productivity</p>
+                            </div>
+                        </div>
+
+                        <div class="progress-circle">
+                            <div class="circle-inner">
+                                <h2 id="progressCircle">0%</h2>
+                                <span>Completed</span>
+                            </div>
+                        </div>
+
+                        <p class="progress-caption">
+                            Keep going! Every completed task counts.
+                        </p>
+
+                    </div>
+
+                    <div class="content-card full-width">
+
+                        <div class="card-heading">
+                            <div>
+                                <h3>Upcoming Examinations</h3>
+                                <p>Stay prepared for your exams</p>
+                            </div>
+                        </div>
+
+                        <div id="upcomingExams" class="empty-state">
+                            <span>📅</span>
+                            <p>Your upcoming examinations will appear here.</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section> 
+
+            <!-- AI STUDY PLANNER -->
+            <section class="page" id="planner">
+
+                <div class="page-heading">
+                    <h1>AI Study Planner ✧</h1>
+                    <p>Create a personalized study timetable based on your goals.</p>
+                </div>
+
+                <!-- Planner Input Form -->
+
+                <div class="content-card planner-form-card">
+
+                    <h3>Build Your Study Plan</h3>
+
+                    <form id="plannerForm">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label for="plannerSubject">Subject</label>
+                                <input
+                                    type="text"
+                                    id="plannerSubject"
+                                    placeholder="e.g. Computer Networks"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="plannerHours">Daily Study Hours</label>
+                                <input
+                                    type="number"
+                                    id="plannerHours"
+                                    min="1"
+                                    max="12"
+                                    value="3"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="plannerStartDate">Start Date</label>
+                                <input
+                                    type="date"
+                                    id="plannerStartDate"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="plannerExamDate">Exam Date</label>
+                                <input
+                                    type="date"
+                                    id="plannerExamDate"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="plannerLevel">Preparation Level</label>
+                                <select id="plannerLevel">
+                                    <option value="Beginner">Beginner</option>
+                                    <option value="Intermediate" selected>Intermediate</option>
+                                    <option value="Advanced">Advanced</option>
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group planner-topics-group">
+                            <label for="plannerTopics">Topics to Cover</label>
+
+                            <textarea
+                                id="plannerTopics"
+                                rows="4"
+                                placeholder="Enter topics separated by commas..."
+                                required
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="primary-button">
+                            ✨ Generate Study Plan
+                        </button>
+
+                    </form>
+
+                </div>
+
+                <!-- Generated Study Plan -->
+
+                <div class="content-card planner-result-card">
+
+                    <div class="card-heading">
+                    </div>
+
+                    <div id="plannerResult" class="empty-state">
+                        <span>📚</span>
+                        <p>Your generated study timetable will appear here.</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- TASK MANAGER -->
+
+            <section class="page" id="tasks">
+
+                <div class="page-heading">
+                    <h1>My Tasks ☑</h1>
+                    <p>Manage your assignments and academic activities.</p>
+                </div>
+
+                <!-- Add Task Form -->
+
+                <div class="content-card task-form-card">
+
+                    <h3 id="formHeading">Add New Task</h3>
+
+                    <form id="taskForm">
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label for="taskTitle">Task Title</label>
+
+                                <input
+                                    type="text"
+                                    id="taskTitle"
+                                    placeholder="Enter task name"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="taskSubject">Subject</label>
+
+                                <input
+                                    type="text"
+                                    id="taskSubject"
+                                    placeholder="e.g. Computer Networks"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="taskDueDate">Due Date</label>
+
+                                <input
+                                    type="date"
+                                    id="taskDueDate"
+                                    required
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="taskPriority">Priority</label>
+
+                                <select id="taskPriority">
+
+                                    <option value="Low">Low</option>
+                                    <option value="Medium" selected>Medium</option>
+                                    <option value="High">High</option>
+
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="form-actions">
+
+                            <button type="submit" class="primary-button" id="submitTask">
+                                + Add Task
+                            </button>
+
+                            <button
+                                type="button"
+                                class="cancel-button"
+                                id="cancelEdit"
+                                hidden
+                            >
+                                Cancel
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <!-- Task Filters -->
+
+                <div class="task-toolbar">
+
+                    <h3>Your Tasks</h3>
+
+                    <select id="taskFilter">
+
+                        <option value="all">All Tasks</option>
+                        <option value="pending">Pending</option>
+                        <option value="completed">Completed</option>
+
+                    </select>
+
+                </div>
+
+                <!-- Task List -->
+
+                <div id="taskList" class="task-list-container">
+
+                    <div class="empty-state">
+                        <span>📚</span>
+                        <p>No tasks added yet.</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- AI STUDY ASSISTANT -->
+            <section class="page" id="assistant">
+
+                <div class="page-heading">
+                    <h1>AI Study Assistant ✦</h1>
+                    <p>Your personal academic assistant.</p>
+                </div>
+
+                <div class="content-card chatbot-card">
+
+                    <!-- Chat Header -->
+                    <div class="chat-header">
+                        <div class="chat-profile">
+                            <div class="chat-avatar">✦</div>
+                            <div>
+                                <h3>StudyMate AI</h3>
+                                <span class="chat-status">● Your Study Assistant</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Messages -->
+                    <div class="chat-messages" id="chatMessages">
+
+                        <div class="bot-message">
+                            <div class="message-avatar">✦</div>
+                            <div class="message-content">
+                                <p>
+                                    Hey! 👋 I'm your StudyMate AI assistant.
+                                    I can help you understand concepts,
+                                    solve academic doubts, prepare for exams
+                                    and improve your study routine.
+                                </p>
+                                <small>StudyMate AI</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Suggested Questions -->
+                    <div class="chat-suggestions" id="chatSuggestions">
+                        <button type="button" class="suggestion-button">
+                            Explain a concept
+                        </button>
+
+                        <button type="button" class="suggestion-button">
+                            Help me prepare for exams
+                        </button>
+
+                        <button type="button" class="suggestion-button">
+                            Give me study tips
+                        </button>
+                    </div>
+
+                    <!-- Chat Input -->
+                    <form id="chatForm" class="chat-input-area">
+
+                        <input
+                            type="text"
+                            id="chatInput"
+                            placeholder="Ask me anything about your studies..."
+                            autocomplete="off"
+                            required
+                        >
+
+                        <button type="submit" id="sendMessage">
+                            ➤
+                        </button>
+
+                    </form>
+
+                    <p class="chat-disclaimer">
+                        StudyMate AI can make mistakes. Verify important academic information.
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- PROGRESS TRACKER -->
+            <section class="page" id="progress">
+
+                <div class="page-heading">
+                    <h1>Progress Tracker ◷</h1>
+                    <p class="subtitle">
+                        Track your academic performance and study consistency.
+                    </p>
+                </div>
+
+                <!-- Overall Statistics -->
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <h3>Total Tasks</h3>
+                        <h2 id="progressTotalTasks">0</h2>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Completed Tasks</h3>
+                        <h2 id="progressCompletedTasks">0</h2>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Pending Tasks</h3>
+                        <h2 id="progressPendingTasks">0</h2>
+                    </div>
+
+                    <div class="stat-card">
+                        <h3>Overall Progress</h3>
+                        <h2 id="overallProgress">0%</h2>
+                    </div>
+
+                </div>
+
+                <!-- Subject-wise Progress -->
+                <div class="content-card">
+                    <h3>Subject-wise Progress</h3>
+
+                    <div id="subjectProgress">
+                        <p class="subtitle">
+                            Your subject-wise progress will appear here.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Weekly Productivity -->
+                <div class="content-card">
+                    <h3>Weekly Productivity</h3>
+
+                    <div class="progress-chart-container">
+                        <canvas id="weeklyProgressChart"></canvas>
+                    </div>
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/tasks.js"></script>
+    <script src="js/planner.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/assistant.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/progress.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>
