@@ -434,7 +434,7 @@ button {
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 1000px) {
 
     .sidebar {
         position: fixed;
@@ -1265,4 +1265,153 @@ button {
     width: 100%;
     height: 300px;
     margin-top: 20px;
+}
+
+/* ========================================
+   EXAMINATION MANAGEMENT
+======================================== */
+
+.exam-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.exam-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 16px;
+    background: var(--input);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    transition: 0.2s ease;
+}
+
+.exam-item:hover {
+    border-color: var(--primary);
+}
+
+.exam-details strong {
+    display: block;
+    color: var(--text);
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.exam-details small {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.exam-delete-btn {
+    background: transparent;
+    color: #E45B65;
+    border: 1px solid #E45B65;
+    padding: 8px 13px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.exam-delete-btn:hover {
+    background: #E45B65;
+    color: white;
+}
+
+
+/* Examination Popup */
+
+.exam-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 15px;
+}
+
+.exam-modal {
+    width: 380px;
+    max-width: 100%;
+    padding: 28px;
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+}
+
+.exam-modal h3 {
+    margin-bottom: 22px;
+    color: var(--text);
+}
+
+.exam-modal label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.exam-modal input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 18px;
+    background: var(--input);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.exam-modal input:focus {
+    border-color: var(--primary);
+}
+
+.exam-modal input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+.exam-modal-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.exam-modal-actions button {
+    flex: 1;
+    padding: 11px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.exam-cancel-btn {
+    background: var(--input);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.exam-cancel-btn:hover {
+    border-color: var(--primary);
+}
+
+.exam-save-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+}
+
+.exam-save-btn:hover {
+    opacity: 0.9;
 }

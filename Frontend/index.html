@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class ="light-mode">
 
     <div class="app-container">
 
@@ -74,11 +74,14 @@
                 </div>
 
                 <div class="profile">
-                    <div class="profile-avatar">S</div>
+                    <div class="profile-avatar" id="profileAvatar">S</div>
                     <div>
-                        <strong>Student</strong>
+                        <strong id="userName">Student</strong>
                         <small>College Student</small>
                     </div>
+                    <button id="editNameBtn" class="edit-name-btn" title="Edit Name">
+                        ✎
+                    </button>
                 </div>
 
             </header>
@@ -89,7 +92,7 @@
                 <div class="welcome-section">
                     <div>
                         <p class="date-text" id="currentDate"></p>
-                        <h1>Welcome back, Student! 👋</h1>
+                        <h1>Welcome back, <span id="welcomeName">Student</span>! 👋</h1>
                         <p class="subtitle">
                             Organize your studies and make today productive.
                         </p>
@@ -184,11 +187,16 @@
                                 <h3>Upcoming Examinations</h3>
                                 <p>Stay prepared for your exams</p>
                             </div>
+
+                            <button class="primary-button" id="addExamBtn" type="button">
+                                + Add Exam
+                            </button>
                         </div>
 
+                        <!-- Examination List -->
                         <div id="upcomingExams" class="empty-state">
                             <span>📅</span>
-                            <p>Your upcoming examinations will appear here.</p>
+                            <p>No upcoming examinations added yet.</p>
                         </div>
 
                     </div>
